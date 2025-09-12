@@ -1,0 +1,42 @@
+.main {
+    cursor: default;
+    padding: 10px;
+    background-color: rgb(64, 65, 67);
+    width: 400px;
+    height: 210px;
+    border-radius: 10px;
+}
+
+.input {
+    margin-top: 10px;
+    border: none;
+    background-color: rgb(117, 118, 121);
+    text-align: center;
+    font-size: 18px;
+    width: 200px;
+    height: 40px;
+    color: rgb(255, 255, 255);
+
+    &_alarm {
+        border: 1px solid red;
+    }
+}
+
+.covertedMac {
+    display: block;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.copy {
+    cursor: default;
+    font-size: 12px;
+}
+
+.button {
+    margin: 10px auto;
+    display: block;
+    padding: 3px;
+}
