@@ -1,4 +1,5 @@
 .main {
+    position: relative;
     cursor: default;
     padding: 10px;
     background-color: rgb(64, 65, 67);
@@ -39,4 +40,12 @@
     margin: 10px auto;
     display: block;
     padding: 3px;
+}
+
+.labuba {
+    position: absolute;
+    right: -25px;
+    bottom: -50px;
+    width: 60px;
+    height: 60px;
 }
