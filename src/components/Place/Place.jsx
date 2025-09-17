@@ -7,7 +7,7 @@ import labuba from "../../assets/labuba.png";
 
 const Place = () => {
     const [mac, setMac] = useState();
-    const [labubuPic, setLabubuPic] = useState(false);
+    const [labubuPic, setLabubuPic] = useState(localStorage.getItem("labuba") || "0" );
     const valid = macValidator(mac);
     const [copied, setCopied] = useState(false);
     const [vendor, setVendor] = useState();
@@ -20,13 +20,18 @@ const Place = () => {
 
     const setLabubu = (text) => {
         if (text == "labubu") {
-            setLabubuPic(!labubuPic);
+            setLabubuPic("1");
+            localStorage.setItem("labuba", "1")
         }
     }
 
     return (
         <div className={styles.main}>
-            {labubuPic ? <img onClick={() => setLabubuPic(false)} className={styles.labuba} src={labuba}></img> : null}
+            {labubuPic == "1" ? <img 
+            onClick={() => {
+                setLabubuPic("0")
+                localStorage.setItem("labuba", "0")
+            }} className={styles.labuba} src={labuba}></img> : null}
             <div>Введите МАКъ</div>
             <input 
                 onChange={(e) => {
