@@ -4,10 +4,12 @@ import macValidator from "../../functions/macValidator";
 import macConvert from "../../functions/macConvert";
 import vendorAPI from "../../functions/vendorAPI";
 import labuba from "../../assets/labuba.png";
+import stich from "../../assets/stich.png";
 
 const Place = () => {
     const [mac, setMac] = useState();
     const [labubuPic, setLabubuPic] = useState(localStorage.getItem("labuba") || "0" );
+    const [stichPic, setStichPic] = useState(localStorage.getItem("stich") || "0" );
     const valid = macValidator(mac);
     const [copied, setCopied] = useState(false);
     const [vendor, setVendor] = useState();
@@ -25,19 +27,35 @@ const Place = () => {
         }
     }
 
+     const setStich = (text) => {
+        if (text == "stich") {
+            setStichPic("1");
+            localStorage.setItem("stich", "1")
+        }
+    }
+
     return (
         <div className={styles.main}>
+
             {labubuPic == "1" ? <img 
             onClick={() => {
                 setLabubuPic("0")
                 localStorage.setItem("labuba", "0")
             }} className={styles.labuba} src={labuba}></img> : null}
+
+            {stichPic == "1" ? <img 
+            onClick={() => {
+                setStichPic("0")
+                localStorage.setItem("stich", "0")
+            }} className={styles.stich} src={stich}></img> : null}
+
             <div>Введите МАКъ</div>
             <input 
                 onChange={(e) => {
                     setMac(e.target.value.trim());
                     setVendor("");
                     setLabubu(e.target.value.trim());
+                    setStich(e.target.value.trim());
                 }} 
                 value={mac} type="text" className={`${styles.input} ${!valid && mac ? styles.input_alarm : ''}`} />
 

@@ -14,7 +14,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sass": "^1.87.0",
-    "vercel": "^41.6.2"
+    "vercel": "^50.3.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
