@@ -5,6 +5,7 @@ import macConvert from "../../functions/macConvert";
 import vendorAPI from "../../functions/vendorAPI";
 import labuba from "../../assets/labuba.png";
 import stich from "../../assets/stich.png";
+import Fireworks from "../../functions/fire";
 
 const Place = () => {
     const [mac, setMac] = useState();
@@ -15,6 +16,7 @@ const Place = () => {
     const [vendor, setVendor] = useState();
 
     const convertedMac = valid ? macConvert(mac) : null;
+    const fireworks = new Fireworks();
 
     const searchVendor = () => {
         setVendor(vendorAPI(mac));
@@ -34,9 +36,14 @@ const Place = () => {
         }
     }
 
+    const runFireworks = () => {
+        fireworks.run()
+        setTimeout(() => fireworks.stop(), 10000);
+    }
+
     return (
         <div className={styles.main}>
-
+            
             {labubuPic == "1" ? <img 
             onClick={() => {
                 setLabubuPic("0")
@@ -51,6 +58,7 @@ const Place = () => {
 
             <div>Введите МАКъ</div>
             <input 
+                onKeyDown={(event) => event.key == "Enter" & valid ? searchVendor() : null}
                 onChange={(e) => {
                     setMac(e.target.value.trim());
                     setVendor("");
@@ -62,6 +70,7 @@ const Place = () => {
             <button onClick={() => valid ? searchVendor() : null} className={styles.button}>Узнать производителя</button>
 
            {vendor ? <div>{vendor}</div> : null}
+           {vendor && String(vendor.value).includes('Cudy') ? runFireworks() : null}
 
             <code className={styles.covertedMac} onClick={() => {
                 if (!convertedMac) return;
